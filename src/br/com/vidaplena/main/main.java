@@ -1,13 +1,12 @@
 package br.com.vidaplena.main;
 
-import br.com.vidaplena.service.ClinicaServico;
-import br.com.vidaplena.model.Paciente;
 import br.com.vidaplena.model.Fisioterapeuta;
-import br.com.vidaplena.model.PagamentoDinheiro;
+import br.com.vidaplena.model.Paciente;
+import br.com.vidaplena.model.Pagamento;
 import br.com.vidaplena.model.PagamentoCartao;
 import br.com.vidaplena.model.PagamentoConvenio;
-import br.com.vidaplena.model.Pagamento;
-
+import br.com.vidaplena.model.PagamentoDinheiro;
+import br.com.vidaplena.service.ClinicaServico;
 import java.util.Scanner;
 
 public class Main {
