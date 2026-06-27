@@ -1,17 +1,16 @@
 package br.com.vidaplena.service;
 
-import br.com.vidaplena.model.Paciente;
-import br.com.vidaplena.model.Profissional;
-import br.com.vidaplena.model.Consulta;
 import br.com.vidaplena.exception.CpfDuplicadoException;
 import br.com.vidaplena.exception.PacienteInativoException;
-
+import br.com.vidaplena.model.Consulta;
+import br.com.vidaplena.model.Paciente;
+import br.com.vidaplena.model.Profissional;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class ClinicaServico {
 
@@ -24,7 +23,7 @@ public class ClinicaServico {
     private List<Profissional> profissionais = new ArrayList<>();
 
     public void cadastrarPaciente(Paciente paciente) throws CpfDuplicadoException {
-       
+    
         if (cpfsCadastrados.contains(paciente.getCpf())) {
             throw new CpfDuplicadoException("Erro: Já existe um paciente cadastrado com o CPF: " + paciente.getCpf());
         }
@@ -39,7 +38,7 @@ public class ClinicaServico {
     }
 
     public void agendarConsulta(String cpfPaciente, String registroProfissional, String dataHora, br.com.vidaplena.model.Pagamento pagamento) throws Exception {
-      
+    
         Paciente paciente = mapaPacientes.get(cpfPaciente);
         if (paciente == null) {
             throw new IllegalArgumentException("Erro: Paciente não encontrado.");
@@ -61,7 +60,7 @@ public class ClinicaServico {
             throw new IllegalArgumentException("Erro: Profissional não encontrado.");
         }
 
-        Consulta novaConsulta = new Consulta(paciente, profesional, dataHora, pagamento);
+        Consulta novaConsulta = new Consulta(paciente, profissional, dataHora, pagamento);
         novaConsulta.agendar();
         
         consultas.add(novaConsulta);
@@ -93,9 +92,9 @@ public class ClinicaServico {
             double valorFinal = c.getPagamento().calcularTotal();
             faturamentoTotal += valorFinal;
             System.out.println("Paciente: " + c.getPaciente().getNome() + 
-                               " | Profissional: " + c.getProfissional().getNome() + 
-                               " | Valor Pago: R$ " + valorFinal + 
-                               " | Status: " + c.getStatus());
+                            " | Profissional: " + c.getProfissional().getNome() + 
+                            " | Valor Pago: R$ " + valorFinal + 
+                            " | Status: " + c.getStatus());
         }
         System.out.println("Faturamento Total Líquido da Clínica: R$ " + faturamentoTotal);
     }

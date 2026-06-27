@@ -2,6 +2,8 @@ package br.com.vidaplena.model;
 
 import br.com.vidaplena.interfaces.Exportavel;
 
+public abstract class Pessoa implements Exportavel {
+
     protected String nome;
     protected String cpf;
     protected String telefone;
